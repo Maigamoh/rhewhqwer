@@ -1,0 +1,22 @@
+:root{--bg:#f6f7f9;--card:#fff;--tx:#1b2430;--mu:#5b6675;--bd:#dde2e9;--ac:#1f6feb;--r1:#c62828;--r2:#e65100;--r3:#b08900;--r4:#2e7d32;--r5:#607080;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#9aa6b5;--bd:#2c3642;--ac:#5b9dff;--r1:#ff6b6b;--r2:#ff9f5a;--r3:#e6c14d;--r4:#6fcf7a;--r5:#9aa6b5}}
+:root[data-theme="dark"]{--bg:#12161c;--card:#1b222b;--tx:#e8edf3;--mu:#9aa6b5;--bd:#2c3642;--ac:#5b9dff;--r1:#ff6b6b;--r2:#ff9f5a;--r3:#e6c14d;--r4:#6fcf7a;--r5:#9aa6b5}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:980px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:0 0 8px}
+.mu{color:var(--mu);font-size:13px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;margin:14px 0}
+.warn{border-left:4px solid var(--r2)}
+button,label.btn{background:var(--ac);color:#fff;border:0;border-radius:7px;padding:8px 14px;font:inherit;cursor:pointer;display:inline-block}
+button.sec,label.btn.sec{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+button:disabled{opacity:.4;cursor:not-allowed}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--bd);font-size:14px;vertical-align:top}
+th{color:var(--mu);font-weight:600;font-size:12px;text-transform:uppercase}
+tr.row{cursor:pointer}tr.row:hover{background:rgba(127,127,127,.08)}
+.pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:700;color:#fff}
+.t1{background:var(--r1)}.t2{background:var(--r2)}.t3{background:var(--r3)}.t4{background:var(--r4)}.t5{background:var(--r5)}
+.flex{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+ul{margin:6px 0 0 18px;padding:0}
+#log{font:12px/1.6 ui-monospace,Menlo,monospace;color:var(--mu);max-height:120px;overflow:auto}

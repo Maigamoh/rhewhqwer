@@ -1,0 +1,7 @@
+{
+  "name": "triage-support",
+  "version": "1.0.0",
+  "description": "Clinical triage decision-support website (NEWS2 + optional validated imaging score). Static, runs in the browser.",
+  "scripts": { "start": "npx --yes serve . -l 5500" },
+  "license": "MIT"
+}

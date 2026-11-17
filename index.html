@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Clinical triage decision support: prioritise cases for clinician review using NEWS2 and optional validated imaging scores. Runs fully in the browser.">
+<title>Clinical Triage Decision Support</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🩺%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/styles.css">
+</head><body>
+<main>
+<h1>Clinical Triage Decision Support</h1>
+<div class="mu">Prioritises cases for clinician review. It does not diagnose, and a clinician makes every decision.</div>
+<div class="mu"><a href="scan.html" style="color:var(--ac)">→ X-ray batch prioritisation (AI image model)</a></div>
+
+<div class="card warn" id="gate">
+<h2>1 · Data legality &amp; provenance gate</h2>
+<div class="mu">Nothing loads until every item is confirmed. Confirmations are written to the audit log.</div>
+<ul style="list-style:none;margin-left:0">
+<li><label><input type="checkbox" class="g"> Data is de-identified or I hold a lawful basis (consent / ethics approval / DPA) to use it.</label></li>
+<li><label><input type="checkbox" class="g"> Data licence or institutional approval permits this use (e.g. open licence, or credentialed access I hold).</label></li>
+<li><label><input type="checkbox" class="g"> Any imaging score comes from a model validated and approved (e.g. CDSCO / FDA / CE) for this population and data source.</label></li>
+<li><label><input type="checkbox" class="g"> Data stays on this device. This page makes no network requests.</label></li>
+</ul>
+<div class="flex" style="margin-top:10px">
+<button id="demo" disabled>Load synthetic demo data</button>
+<label class="btn sec" id="upl" style="opacity:.4;pointer-events:none">Upload CSV<input id="file" type="file" accept=".csv" hidden></label>
+<button class="sec" id="tpl">Download CSV template</button>
+</div>
+<div class="mu" style="margin-top:8px">Columns: id, age, rr, spo2, o2 (0/1), sbp, pulse, temp, alert (1 = alert, 0 = not), image_ai_score (optional, 0–1).</div>
+</div>
+
+<div class="card" id="listcard" hidden>
+<h2>2 · Prioritised worklist</h2>
+<div class="flex mu" id="summary"></div>
+<div class="wrap"><table><thead><tr><th>#</th><th>Case</th><th>Tier</th><th>NEWS2</th><th>Image flag</th><th>Review within</th></tr></thead><tbody id="body"></tbody></table></div>
+</div>
+
+<div class="card" id="detail" hidden></div>
+
+<div class="card"><h2>Method &amp; limits</h2>
+<ul class="mu">
+<li>Clinical data is scored with NEWS2 (Royal College of Physicians), a published, auditable early-warning score. Each point is explained per case.</li>
+<li>An imaging score ≥ 0.70 escalates a case by one tier. It is shown separately and never replaces clinical judgement.</li>
+<li>NEWS2 is not validated for children, pregnancy, or chronic hypercapnic respiratory failure (SpO₂ scale 2 is not applied).</li>
+<li>Before real use you need local validation, bias and subgroup checks, regulatory clearance as software as a medical device, and a clinical safety case.</li>
+<li>The demo data is synthetic and fully legal to use. Real patients are never needed to try this.</li>
+</ul></div>
+<div class="card"><h2>Audit log</h2><div id="log"></div></div>
+<script src="js/app.js"></script>
+</body></html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>X-ray Batch Prioritisation</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>.res{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start}.res canvas{width:224px;height:224px;border-radius:8px;border:1px solid var(--bd);background:#000}
+.rk{font-size:26px;font-weight:700;min-width:44px}.bar{height:8px;border-radius:4px;background:var(--bd);overflow:hidden;margin:6px 0}.bar i{display:block;height:100%;background:var(--r2)}</style>
+</head><body><main>
+<h1>X-ray Batch Review Queue</h1>
+<div class="mu"><a href="index.html" style="color:var(--ac)">← Triage worklist</a></div>
+<div class="card warn"><h2>Read before use</h2><ul class="mu">
+<li>Upload several chest X-rays to order them from highest to lowest estimated <b>pneumonia likelihood</b> for clinician review. This is <b>not</b> a measure of urgency, treatment need, or a recommendation to cure/treat now. Use symptoms, vital signs, and clinical judgement to decide urgency.</li>
+<li>Trained only on <b>pediatric (age 1–5)</b> chest X-rays from one hospital. Results on adults, other scanners or phone photos are unreliable.</li>
+<li>The possible finding shown below is only the model's pneumonia signal. It cannot identify reliable signs, rule out other diseases, or make a diagnosis. The heatmap shows model attention, not an abnormality. A clinician must review every image.</li>
+<li>Images are processed in your browser and are never uploaded.</li></ul></div>
+<div class="card">
+<div id="mstat" class="mu">Loading model…</div>
+<p><label><input type="checkbox" id="att"> I have the right to use these images (de-identified, or consent / ethics approval).</label></p>
+<div class="flex"><label class="btn sec">Select X-ray images<input id="files" type="file" accept="image/*" multiple hidden></label>
+<span id="fcount" class="mu">No images selected</span><button id="go" disabled>Analyse &amp; rank</button></div></div>
+<div class="card" id="sumcard" hidden><h2>Review order</h2><div id="sum"></div></div>
+<div id="out"></div>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.17.3/dist/ort.min.js"></script>
+<script src="js/scan.js"></script>
+</main></body></html>
